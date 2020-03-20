@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="teste">
+    <link name="base_link">
+        <visual>     
+            <geometry>
+                <mesh filename="package://openrov_description/meshes/vehicle.dae"/>
+            </geometry>
+        </visual>
+    </link>
+</robot>
