@@ -44,22 +44,22 @@
         <inertial>
           <mass value="${mass}" />
           <origin xyz="${cog}" rpy="0 0 0"/>
-          <inertia ixx="0" ixy="0" ixz="0"
-                   iyy="0" iyz="0"
-                   izz="0" />
+          <inertia ixx="1" ixy="0" ixz="0"
+                   iyy="1" iyz="0"
+                   izz="1" />
         </inertial>
 
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
-            <mesh filename="${visual_mesh_file}" scale="1 1 1" />
+            <mesh filename="${visual_mesh_file}" scale="${scale}" />
           </geometry>
         </visual>
 
         <collision>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
-            <mesh filename="${collision_mesh_file}" scale="1 1 1" />
+            <mesh filename="${collision_mesh_file}" scale="${scale}" />
           </geometry>
         </collision>
       </link>

@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <xacro:property name="scale" value="1 1 1"/>
+
   <!--                                                                      -->
   <!-- MACRO FOR THRUSTER UNITS  -->
   <!--                                                                      -->
@@ -25,7 +27,7 @@
 
       <visual>
         <geometry>
-          <mesh filename="${prop_mesh_file}" scale="1 1 1" />
+          <mesh filename="${prop_mesh_file}" scale="${scale}" />
         </geometry>
       </visual>
 
@@ -220,7 +222,7 @@
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
-            <mesh filename="${fin_mesh_file}" scale="1 1 1"/>
+            <mesh filename="${fin_mesh_file}" scale="${scale}"/>
           </geometry>
         </visual>
       </link>
@@ -249,7 +251,7 @@
           -->
           <liftdrag>
             <type>TwoLines</type>
-            <area>${replace here the value for the area of the fin's cross section}</area>
+            <area>${0.000630}</area>
             <fluid_density>0.0</fluid_density>
             <a0>0.0</a0>
             <alpha_stall>0.0</alpha_stall>

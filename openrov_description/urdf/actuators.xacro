@@ -9,29 +9,20 @@
     -->
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="0">
-        <origin xyz="0 0 0" rpy="0 0 ${pi}" />
+        <origin xyz="-0.069639 0.000293 0.058843 " rpy="0 ${pi/2} 0" />
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="1">
-        <origin xyz="0 0 0" rpy="0 0 ${pi}" />
+        <origin xyz="-0.146087 0.04559  0" rpy="0 0 0" />
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="2">
-    <origin xyz="0 0 0" rpy="0 -${0.5*pi} 0" />
+    <origin xyz="-0.146087 -0.044872 0" rpy="0 0 0" />
     </xacro:thruster_macro>
 
     <!-- Instantiate fins, if necessary -->
     <xacro:fin_macro namespace="${namespace}" fin_id="0">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:fin_macro>
-    <xacro:fin_macro namespace="${namespace}" fin_id="1">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:fin_macro>
-    <xacro:fin_macro namespace="${namespace}" fin_id="2">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:fin_macro>
-    <xacro:fin_macro namespace="${namespace}" fin_id="3">
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.04687 -0.26058 0.20071" rpy="0 0 0" />
     </xacro:fin_macro>
 
 </robot>
