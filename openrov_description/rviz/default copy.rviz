@@ -45,11 +45,25 @@ Visualization Manager:
           Value: true
         openrov/camera_link:
           Value: true
+        openrov/dvl_link:
+          Value: true
+        openrov/dvl_sonar0_link:
+          Value: true
+        openrov/dvl_sonar1_link:
+          Value: true
+        openrov/dvl_sonar2_link:
+          Value: true
+        openrov/dvl_sonar3_link:
+          Value: true
         openrov/imu_link:
           Value: true
         openrov/ned_link:
           Value: true
         openrov/pose_sensor_link:
+          Value: true
+        openrov/pressure_link:
+          Value: true
+        openrov/rpt_link:
           Value: true
         openrov/thruster_0:
           Value: true
@@ -71,11 +85,24 @@ Visualization Manager:
               openrov/base_link:
                 openrov/camera_link:
                   {}
+                openrov/dvl_link:
+                  openrov/dvl_sonar0_link:
+                    {}
+                  openrov/dvl_sonar1_link:
+                    {}
+                  openrov/dvl_sonar2_link:
+                    {}
+                  openrov/dvl_sonar3_link:
+                    {}
                 openrov/imu_link:
                   {}
                 openrov/ned_link:
                   {}
                 openrov/pose_sensor_link:
+                  {}
+                openrov/pressure_link:
+                  {}
+                openrov/rpt_link:
                   {}
                 openrov/thruster_0:
                   {}
@@ -135,6 +162,31 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        openrov/dvl_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        openrov/dvl_sonar0_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        openrov/dvl_sonar1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        openrov/dvl_sonar2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        openrov/dvl_sonar3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         openrov/imu_link:
           Alpha: 1
           Show Axes: false
@@ -146,6 +198,16 @@ Visualization Manager:
           Show Trail: false
           Value: true
         openrov/pose_sensor_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        openrov/pressure_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        openrov/rpt_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -181,6 +243,46 @@ Visualization Manager:
       Name: Odometry
       Position Tolerance: 1
       Topic: /openrov/pose_gt
+      Value: true
+    - Alpha: 0.5
+      Buffer Length: 1
+      Class: rviz/Range
+      Color: 255; 255; 255
+      Enabled: true
+      Name: DVL - Sonar 0
+      Queue Size: 100
+      Topic: /openrov/dvl_sonar0
+      Unreliable: false
+      Value: true
+    - Alpha: 0.5
+      Buffer Length: 1
+      Class: rviz/Range
+      Color: 255; 255; 255
+      Enabled: true
+      Name: DVL - Sonar 1
+      Queue Size: 100
+      Topic: /openrov/dvl_sonar1
+      Unreliable: false
+      Value: true
+    - Alpha: 0.5
+      Buffer Length: 1
+      Class: rviz/Range
+      Color: 255; 255; 255
+      Enabled: true
+      Name: DVL - Sonar 2
+      Queue Size: 100
+      Topic: /openrov/dvl_sonar2
+      Unreliable: false
+      Value: true
+    - Alpha: 0.5
+      Buffer Length: 1
+      Class: rviz/Range
+      Color: 255; 255; 255
+      Enabled: true
+      Name: DVL - Sonar 3
+      Queue Size: 100
+      Topic: /openrov/dvl_sonar3
+      Unreliable: false
       Value: true
     - Class: rviz/Marker
       Enabled: true
