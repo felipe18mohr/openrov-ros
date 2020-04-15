@@ -9,15 +9,15 @@
     -->
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="0">
-        <origin xyz="-0.069639 0.000293 0.058843 " rpy="0 ${pi/2} 0" />
+        <origin xyz="-0.062 0 0.062" rpy="0 ${-PI/2} 0"/>
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="1">
-        <origin xyz="-0.146087 0.04559  0" rpy="0 0 0" />
+        <origin xyz="-0.14 -0.045 0" rpy="0 0 ${PI}"/>
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="2">
-    <origin xyz="-0.146087 -0.044872 0" rpy="0 0 0" />
+    <origin xyz="-0.14 0.045 0" rpy="0 0 ${PI}"/>
     </xacro:thruster_macro>
     
 </robot>

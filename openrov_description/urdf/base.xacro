@@ -3,7 +3,8 @@
   <!-- Loading some constants -->
   <xacro:include filename="$(find uuv_descriptions)/urdf/common.urdf.xacro"/>
   <!-- Loading file with sensor macros -->
-  <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
+  <!--xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/-->
+  <!--xacro:include filename="$(find openrov_description)/urdf/sensor_snippets.xacro"/-->
   <!-- Loading the UUV simulator ROS plugin macros -->
   <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/snippets.xacro"/>  
   <!-- Loading vehicle's specific macros -->
@@ -13,9 +14,9 @@
     Vehicle's parameters (remember to enter the model parameters below)
   -->
 
-  <xacro:property name="mass" value="2.6"/>
+  <xacro:property name="mass" value="2.4"/>
   <!-- Center of gravity -->
-  <xacro:property name="cog" value="0.005 0 0.01"/>
+  <xacro:property name="cog" value="0.0 0.0 0.0"/>
   <!-- Fluid density -->
   <xacro:property name="rho" value="1028"/>
 
@@ -30,7 +31,7 @@
   <!-- Collision geometry mesh, usually in STL format (it is recommended to keep
   this geometry as simple as possible to improve the performance the physics engine
   regarding the computation of collision forces) -->
-  <xacro:property name="collision_mesh_file" value="file://$(find openrov_description)/meshes/vehicle.stl"/>
+  <!--xacro:property name="collision_mesh_file" value="file://$(find openrov_description)/meshes/vehicle.stl"/-->
 
   <!-- Vehicle macro -->
   <xacro:macro name="openrov_base" params="namespace *gazebo">
@@ -44,9 +45,9 @@
         <inertial>
           <mass value="${mass}" />
           <origin xyz="${cog}" rpy="0 0 0"/>
-          <inertia ixx="1" ixy="0" ixz="0"
-                   iyy="1" iyz="0"
-                   izz="1" />
+          <inertia ixx="0.01355" ixy="0" ixz="0"
+                   iyy="0.00480" iyz="0"
+                   izz="0.00593" />
         </inertial>
 
         <visual>
@@ -59,7 +60,8 @@
         <collision>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
-            <mesh filename="${collision_mesh_file}" scale="${scale}" />
+            <!--mesh filename="${collision_mesh_file}" scale="${scale}" /-->
+            <box size="0.30 0.20 0.15"/>
           </geometry>
         </collision>
       </link>
@@ -75,8 +77,8 @@
     <xacro:include filename="$(find openrov_description)/urdf/actuators.xacro"/>
 
     <!-- Include the sensor modules -->
-    <xacro:include filename="$(find openrov_description)/urdf/sensors.xacro"/>
-
+    <!--xacro:include filename="$(find openrov_description)/urdf/sensors.xacro"/\-->
+    
   </xacro:macro>
 
 </robot>

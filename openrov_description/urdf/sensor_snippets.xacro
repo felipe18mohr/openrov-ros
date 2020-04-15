@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <xacro:macro name="default_camera" params="namespace parent_link *origin">
+
+    <link name="${namespace}/camera_link">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="${meshes_path}/camera.dae" scale="${scale}"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="${namespace}/camera_fix">
+      <visual>
+        <xacro:insert_block name="origin">
+        <geometry>
+          <box size="0.01 0.01 0.01"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${namespace}/camera_to_fix" type="fixed">
+      <xacro:insert_block name="origin">
+      <parent link="camera_fix"/>
+      <child link="camera_link"/>
+    </joint>
+
+    <joint name="${namespace}/base_to_camera" type="revolute">
+      <origin xyz="0.025 0.0 0.015419" rpy="0.0 0.0 0.0"/>
+      <parent link="base_link"/>
+      <child link="camera_fix"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="${-PI/4}" upper="${PI/4}" effort="0.0" velocity="0.0"/>
+    </joint>
+  </xacro:macro>
+
+</robot>
