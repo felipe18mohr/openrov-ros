@@ -1,39 +1,109 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   
-  <xacro:macro name="default_camera" params="namespace parent_link *origin">
+  <xacro:property name="meshes_path" value="$(find openrov_description)/meshes"/>
+
+  <xacro:macro name="camera_openrov" params="namespace parent_link *origin">
 
     <link name="${namespace}/camera_link">
       <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="${meshes_path}/camera.dae" scale="${scale}"/>
+          <mesh filename="${meshes_path}/camera.dae"/>
         </geometry>
       </visual>
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.00000001" ixy="0.0" ixz="0.0" iyy="0.00000001" iyz="0.0" izz="0.00000001"/>
+      </inertial>
     </link>
 
     <link name="${namespace}/camera_fix">
       <visual>
-        <xacro:insert_block name="origin">
+        <xacro:insert_block name="origin"/>
         <geometry>
           <box size="0.01 0.01 0.01"/>
         </geometry>
       </visual>
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <mass value="0.001"/>
+        <inertia ixx="0.00000001" ixy="0.0" ixz="0.0" iyy="0.00000001" iyz="0.0" izz="0.00000001"/>
+      </inertial>
     </link>
 
     <joint name="${namespace}/camera_to_fix" type="fixed">
-      <xacro:insert_block name="origin">
-      <parent link="camera_fix"/>
-      <child link="camera_link"/>
+      <xacro:insert_block name="origin"/>
+      <parent link="${namespace}/camera_fix"/>
+      <child link="${namespace}/camera_link"/>
     </joint>
 
     <joint name="${namespace}/base_to_camera" type="revolute">
       <origin xyz="0.025 0.0 0.015419" rpy="0.0 0.0 0.0"/>
-      <parent link="base_link"/>
-      <child link="camera_fix"/>
+      <parent link="${parent_link}"/>
+      <child link="${namespace}/camera_fix"/>
       <axis xyz="0 1 0"/>
       <limit lower="${-PI/4}" upper="${PI/4}" effort="0.0" velocity="0.0"/>
     </joint>
+
+    <gazebo reference="${namespace}/camera_link">
+      <sensor type="camera" name="camera">
+        <update_rate>30.0</update_rate>
+        <camera name="head">
+          <horizontal_fov>2.0944</horizontal_fov>
+          <image>
+            <width>1280</width>
+            <height>720</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.02</near>
+            <far>300</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <!-- Noise is sampled independently per pixel on each frame.
+                 That pixel's noise value is added to each of its color
+                 channels, which at that point lie in the range [0,1]. -->
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>${namespace}/camera</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera_link</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+      </sensor>
+    </gazebo>
+
+    <transmission name="tran_cam">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${namespace}/base_to_camera">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_cam">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/${namespace}</robotNamespace>
+      </plugin>
+    </gazebo>
+  
   </xacro:macro>
 
 </robot>

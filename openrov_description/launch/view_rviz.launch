@@ -2,7 +2,7 @@
 
   <arg name="model" default="$(find openrov_description)/robots/default.xacro"/>
   <arg name="gui" default="true" />
-  <arg name="rvizconfig" default="$(find openrov_description)/rviz/default.rviz" />
+  <arg name="rvizconfig" default="$(find openrov_description)/rviz/default_copy.rviz" />
 
   <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
   <param name="use_gui" value="$(arg gui)"/>
