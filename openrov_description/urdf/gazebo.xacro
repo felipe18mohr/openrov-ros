@@ -5,7 +5,7 @@
     <xacro:property name="openrov_cob" value="0 0 0"/>
 
     <!-- Vehicle's actual volume (Gazebo cannot compute the volume out of the mesh) -->
-    <xacro:property name="openrov_volume" value="5e-3"/>
+    <xacro:property name="openrov_volume" value="0.00107346790644"/>
 
     <!-- Describing the dimensions of the vehicle's bounding box -->
     <xacro:property name="openrov_length" value="0.30"/>
@@ -100,11 +100,11 @@
         </hydrodynamic_model>
 
         <!-- 2) This computes the added-mass and damping parameters for a sphere
-        in the fluid with the given radius -->
+        in the fluid with the given radius >
         <hydrodynamic_model>
           <type>sphere</type>
           <radius>0</radius>
-        </hydrodynamic_model>
+        </hydrodynamic_model-->
 
       </link>
     </xacro:macro>
