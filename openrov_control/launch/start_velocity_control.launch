@@ -1,0 +1,13 @@
+<launch>
+  <arg name="joy_id" default="0"/>
+  <!-- Start new world -->
+  <include file="$(find uuv_gazebo_worlds)/launch/ocean_waves.launch"/>
+
+  <!-- Start your vehicle -->
+  <include file="$(find openrov_description)/launch/upload.launch"/>
+
+  <!-- Start the controller and teleop nodes -->
+  <include file="$(find openrov_control)/launch/joy_velocity.launch">
+    <arg name="joy_id" value="$(arg joy_id)"/>
+  </include>
+</launch>

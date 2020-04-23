@@ -1,0 +1,9 @@
+pid:
+  mass: 2.4
+  inertial:
+    ixx: 0.01355
+    ixy: 0
+    ixz: 0
+    iyy: 0.00480
+    iyz: 0
+    izz: 0.00593

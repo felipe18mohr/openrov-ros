@@ -2,5 +2,7 @@
 <launch>
   <include file="$(find uuv_gazebo_worlds)/launch/mangalia.launch"/>
   <include file="$(find openrov_description)/launch/upload.launch"/>
-  <!--include file="$(find openrov_description)/launch/view_rviz.launch"/-->
+  <include file="$(find openrov_control)/launch/thruster_manager.launch">
+    <arg name="reset_tam" default="false"/>
+  </include>
 </launch>

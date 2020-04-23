@@ -1,0 +1,10 @@
+<launch>
+  <!-- Start new world -->
+  <include file="$(find uuv_gazebo_worlds)/launch/auv_underwater_world.launch"/>
+
+  <!-- Start your vehicle -->
+  <include file="$(find openrov_description)/launch/upload.launch"/>
+
+  <!-- Start the controller and teleop nodes -->
+  <include file="$(find openrov_control)/launch/keyboard_velocity.launch"/>
+</launch>
