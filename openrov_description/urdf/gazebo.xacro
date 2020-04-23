@@ -66,9 +66,9 @@
             like the added-mass coefficients above.
             This matrix is mostly useful for slender bodies (e.g. AUVs with torpedo shape)
           -->
-          <linear_damping_forward_speed>
+          <!--linear_damping_forward_speed>
             0 0 0 0 0 0
-          </linear_damping_forward_speed>
+          </linear_damping_forward_speed-->
           <!--
             The quadratic damping coefficients can be provided as a diagonal (6 elements)
             or a full matrix (36 coefficients), like the added-mass coefficients above

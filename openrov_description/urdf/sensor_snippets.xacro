@@ -87,7 +87,7 @@
       </sensor>
     </gazebo>
 
-    <transmission name="tran_cam">
+    <!--transmission name="tran_cam">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${namespace}/base_to_camera">
         <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -96,7 +96,7 @@
         <hardwareInterface>EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
-    </transmission>
+    </transmission-->
 
     <gazebo>
       <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
