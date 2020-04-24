@@ -23,7 +23,7 @@
     </node>
   </group>
 
-  <include file="$(find uuv_teleop)/launch/uuv_keyboard_teleop.launch">
+  <include file="$(find openrov_teleop)/launch/openrov_keyboard_teleop.launch">
     <arg name="uuv_name" default="$(arg uuv_name)"/>
   </include>
 </launch>
