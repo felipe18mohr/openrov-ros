@@ -1,0 +1,23 @@
+digraph G {
+node [shape=box];
+"openrov/base_link" [label="openrov/base_link"];
+"openrov/camera_fix" [label="openrov/camera_fix"];
+"openrov/camera_link" [label="openrov/camera_link"];
+"openrov/pose_sensor_link_default" [label="openrov/pose_sensor_link_default"];
+"openrov/thruster_0" [label="openrov/thruster_0"];
+"openrov/thruster_1" [label="openrov/thruster_1"];
+"openrov/thruster_2" [label="openrov/thruster_2"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"openrov/base_link" -> "openrov/base_to_camera" [label="xyz: 0.025 0 0.015419 \nrpy: 0 -0 0"]
+"openrov/base_to_camera" -> "openrov/camera_fix"
+"openrov/camera_fix" -> "openrov/camera_to_fix" [label="xyz: 0.05 0 0 \nrpy: 0 -0 0"]
+"openrov/camera_to_fix" -> "openrov/camera_link"
+"openrov/base_link" -> "openrov/pose_sensor_default_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"openrov/pose_sensor_default_joint" -> "openrov/pose_sensor_link_default"
+"openrov/base_link" -> "openrov/thruster_0_joint" [label="xyz: -0.062 0 0.062 \nrpy: 0 -1.5708 0"]
+"openrov/thruster_0_joint" -> "openrov/thruster_0"
+"openrov/base_link" -> "openrov/thruster_1_joint" [label="xyz: -0.14 -0.045 0 \nrpy: 0 -0 3.14159"]
+"openrov/thruster_1_joint" -> "openrov/thruster_1"
+"openrov/base_link" -> "openrov/thruster_2_joint" [label="xyz: -0.14 0.045 0 \nrpy: 0 -0 3.14159"]
+"openrov/thruster_2_joint" -> "openrov/thruster_2"
+}

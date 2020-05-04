@@ -16,7 +16,8 @@
 
   <xacro:property name="mass" value="2.47"/>
   <!-- Center of gravity -->
-  <xacro:property name="cog" value="0.0 0.0 0.0"/>
+  <!--xacro:property name="cog" value="0.0 0.0 0.0"/-->
+  <xacro:property name="cog" value="-0.062 0 0.062"/>
   <!-- Fluid density -->
   <xacro:property name="rho" value="1028"/>
 
